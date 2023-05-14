@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>list</title>
+</head>
+<body>
+<h2>게시글 리스트</h2>
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th>번호</th>
+            <th>제목</th>
+            <th>작성일시</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="board : ${boardList}">
+            <td th:text="${board.boardId}"></td>
+            <td>
+                <a th:href="@{/read(boardId=${board.boardId})}" th:text="${board.boardTitle}"></a>
+            </td>
+            <td th:text="${board.createdDate}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<br>
+<div>
+    <button id="createBtn">새로운 글 작성</button>
+</div>
+</body>
+<script type="text/javascript">
+    const createBtn = document.getElementById('createBtn');
+
+    createBtn.addEventListener("click", function () {
+        location.href = "/create";
+    })
+</script>
+</html>

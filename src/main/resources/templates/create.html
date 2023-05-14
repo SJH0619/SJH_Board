@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>create</title>
+</head>
+<body>
+<form th:action="@{/create}" th:object="${boardDTO}" method="post">
+    <label for="title">제목</label>
+    <input id="title" type="text" th:field="*{boardTitle}"/>
+    <br>
+    <label for="content">내용</label>
+    <textarea id="content" th:field="*{boardContent}"></textarea>
+    <br>
+    <button type="submit">작성완료</button>
+</form>
+<button id="listBtn">작성취소</button>
+</body>
+<script type="text/javascript">
+    const createBtn = document.getElementById('listBtn');
+
+    createBtn.addEventListener("click", function () {
+        location.href = "/list";
+    })
+</script>
+</html>
